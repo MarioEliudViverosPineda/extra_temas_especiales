@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Archivos</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .page_contenedor {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .boton_cargar_class {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 15px;
+        border: none;
+        background: none;
+    }
+
+    .boton_cargar {
+        background-color: #333;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s ease;
+    }
+
+    .boton_cargar:hover {
+        background-color: #555;
+    }
+
+    .tabla {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    .tabla th, .tabla td {
+        border: 1px solid #18181a;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .tabla th {
+        background-color: #f0f0f0;
+        color: #333;
+    }
+
+    .lista:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+    .lista:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    .tabla a {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 4px;
+        background-color: #f65050;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        transition: background-color 0.2s ease;
+    }
+
+    .tabla a:hover {
+        background-color: #d43d3d;
+    }
+</style>
+<body>
+<div class="page_contenedor">
+    <h1 class="title">Archivos</h1>
+    <button class="boton_cargar_class">
+        <a class="boton_cargar" href="/archivos/nuevo">Cargar Archivo</a>
+    </button>
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Peso (bytes)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr class="lista" th:each="archivo : ${archivos}">
+            <td th:text="${archivo.idArchivo}"></td>
+            <td th:text="${archivo.nombre}"></td>
+            <td th:text="${archivo.tipo}"></td>
+            <td th:text="${archivo.tamano}"></td>
+            <td>
+                <a th:href="@{'/archivos/eliminar/' + ${archivo.idArchivo}}">Eliminar</a>
+                <a th:href="@{'/archivos/ver/' + ${archivo.idArchivo}}" target="_blank">Ver PDF</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

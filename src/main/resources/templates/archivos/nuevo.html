@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cargar Archivo</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        width: 350px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    input[type="file"] {
+        margin: 15px 0;
+    }
+
+    button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 15px;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+</style>
+<body>
+<div class="container">
+    <h1>Cargar Archivo</h1>
+    <form action="#" th:action="@{/archivos/cargar}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" /> <br/>
+        <button type="submit">Cargar</button>
+    </form>
+    <div th:if="${error}">
+        <p style="color:red;" th:text="${error}"></p>
+    </div>
+    <a href="/archivos">Volver a la lista</a>
+</div>
+</body>
+</html>
