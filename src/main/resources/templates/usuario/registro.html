@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4a90e2, #9013fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        .login-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background: #4a90e2;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .login-container button:hover { background: #357ab8; }
+        .registro-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .registro-link a { color: #4a90e2; }
+        p { color: red; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h1>Registro</h1>
+    <form th:action="@{/usuario/registro}" method="post">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required/>
+        <label>Correo:</label>
+        <input type="email" name="correo" required/>
+        <label>password:</label>
+        <input type="password" name="contrasena" required/>
+        <button type="submit">Registrarse</button>
+    </form>
+    <p th:if="${error}" th:text="${error}"></p>
+    <div class="registro-link">
+        <a href="/usuario/login">Iniciar</a>
+    </div>
+</div>
+</body>
+</html>

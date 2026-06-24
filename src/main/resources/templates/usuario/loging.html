@@ -36,11 +36,7 @@
             margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            transition: border-color 0.3s;
-        }
-        .login-container input:focus {
-            border-color: #4a90e2;
-            outline: none;
+            box-sizing: border-box;
         }
         .login-container button {
             width: 100%;
@@ -51,23 +47,30 @@
             color: #fff;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
         }
-        .login-container button:hover {
-            background: #357ab8;
+        .login-container button:hover { background: #357ab8; }
+        .registro-link {
+            text-align: center;
+            margin-top: 15px;
         }
+        .registro-link a { color: #4a90e2; }
+        p { color: red; text-align: center; }
     </style>
 </head>
 <body>
 <div class="login-container">
     <h1>Login</h1>
-    <form action="/login" method="post">
-        <label>Usuario:</label>
-        <input type="text" name="username" />
+    <form th:action="@{/usuario/login}" method="post">
+        <label>Correo:</label>
+        <input type="email" name="correo" required/>
         <label>password:</label>
-        <input type="password" name="password" />
+        <input type="password" name="contrasena" required/>
         <button type="submit">Ingresar</button>
     </form>
+    <p th:if="${error}" th:text="${error}"></p>
+    <div class="registro-link">
+        <a href="/usuario/registro">registrate</a>
+    </div>
 </div>
 </body>
 </html>
