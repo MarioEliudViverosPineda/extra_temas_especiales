@@ -16,7 +16,7 @@ public class IniciarSecionController {
 
     @GetMapping("/login")
     public String mostrarLogin() {
-        return "usuario/login";
+        return "usuario/loging";
     }
 
     @GetMapping("/registro")
@@ -33,7 +33,7 @@ public class IniciarSecionController {
             return "redirect:/archivos";
         } catch (RuntimeException e) {
             model.addAttribute("error", e.getMessage());
-            return "usuario/login";
+            return "usuario/loging";
         }
     }
 
